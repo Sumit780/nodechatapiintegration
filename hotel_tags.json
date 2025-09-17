@@ -1,0 +1,546 @@
+[
+  {
+    "name": "Star Rating",
+    "field": "starRating",
+    "value": [3, 4, 5],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["stay", "itinerary"]
+  },
+  {
+    "name": "Style/Architecture",
+    "field": "styleArchitecture",
+    "value": [
+      "Modern",
+      "Contemporary",
+      "Minimalist",
+      "Rustic",
+      "Traditional",
+      "Historic",
+      "Boutique",
+      "Art Deco",
+      "Classical",
+      "Haussmannian",
+      "Mountain Chalet",
+      "Coastal",
+      "Mediterranean",
+      "Tuscan Villa",
+      "Provencal",
+      "Palazzo/Palatial",
+      "Château",
+      "Beach Resort"
+    ],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["stay", "itinerary"]
+  },
+  {
+    "name": "Atmosphere/Vibe",
+    "field": "vibe",
+    "value": [
+      "Romantic",
+      "Cozy/Intimate",
+      "Sophisticated/Elegant",
+      "Lively/Fun",
+      "Quirky/Eccentric",
+      "Trendy/Modern",
+      "Relaxed/Casual",
+      "Glamorous",
+      "Family-Friendly",
+      "Artistic/Creative",
+      "Rustic"
+    ],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["stay", "experience", "itinerary"]
+  },
+  {
+    "name": "Location Type",
+    "field": "locationType",
+    "value": [
+      "Urban",
+      "Coastal",
+      "Mountainous",
+      "Remote/Rural",
+      "Near Major Attractions",
+      "Off the Beaten Path"
+    ],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["stay", "experience", "itinerary"]
+  },
+  {
+    "name": "Themes",
+    "field": "themes",
+    "value": [
+      "Romance",
+      "Wellness",
+      "Heritage",
+      "Family",
+      "Art & Culture",
+      "Adventure",
+      "Luxury",
+      "Fashion",
+      "Cultural"
+    ],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["stay", "itinerary"]
+  },
+  {
+    "name": "Affiliation",
+    "field": "affiliation",
+    "value": [
+      "Relais & Châteaux",
+      "Leading Hotels of the World",
+      "Dorchester Collection",
+      "Mandarin Oriental",
+      "None"
+    ],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["stay", "itinerary"]
+  },
+  {
+    "name": "Notable Amenities",
+    "field": "notableAmenities",
+    "value": [
+      "Rooftop Terrace",
+      "Pool",
+      "Spa",
+      "Golf Course",
+      "Winery",
+      "Michelin-Starred Restaurant",
+      "Art Exhibitions",
+      "Gardens",
+      "Private Library",
+      "Organic Farm"
+    ],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["stay", "itinerary"]
+  },
+  {
+    "name": "City Break or Longer Trip",
+    "field": "cityBreakOrLongerTrip",
+    "value": ["City Break", "Longer Trip"],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["stay", "itinerary"]
+  },
+  {
+    "name": "Walkability",
+    "field": "walkability",
+    "value": ["High", "Medium", "Low"],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["stay", "itinerary"]
+  },
+  {
+    "name": "Proximity to Airports",
+    "field": "proximityToAirports",
+    "value": [
+      "Close (Under 1 hour)",
+      "Medium (Around 1 hour)",
+      "Remote (Over 1 hour)"
+    ],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["stay", "itinerary"]
+  },
+  {
+    "name": "Proximity to Major Attractions",
+    "field": "proximityToMajorAttractions",
+    "value": ["Close", "Medium", "Off the Beaten Path"],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["stay", "itinerary"]
+  },
+  {
+    "name": "Seasonal Appeal",
+    "field": "seasonalAppeal",
+    "value": ["Year-Round", "Spring/Summer Special", "Winter Special"],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["stay", "experience", "itinerary"]
+  },
+  {
+    "name": "Restaurant Type",
+    "field": "restaurantType",
+    "value": [
+      "Fine Dining",
+      "Casual Dining",
+      "Café",
+      "Bar",
+      "Wine Bar",
+      "Ice Cream Shop",
+      "Street Food",
+      "Gastropub",
+      "Bistro",
+      "Brasserie"
+    ],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["experience", "itinerary"]
+  },
+  {
+    "name": "For Activities",
+    "field": "forActivities",
+    "value": [
+      "Museum",
+      "Art Gallery",
+      "Historical Landmark",
+      "Park/Garden",
+      "Beach",
+      "Adventure/Outdoor Activity",
+      "Guided Tour",
+      "Festival/Event",
+      "Spa/Wellness Retreat",
+      "Cultural Experience (e.g., cooking classes, traditional performances)",
+      "Amusement Park/Theme Park",
+      "Shopping Destination"
+    ],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["experience", "itinerary"]
+  },
+  {
+    "name": "Cuisine",
+    "field": "cuisine",
+    "value": [
+      "Italian",
+      "French",
+      "Japanese",
+      "Mediterranean",
+      "Vegan/Vegetarian",
+      "Seafood",
+      "Farm-to-Table",
+      "Local/Regional",
+      "Fusion",
+      "Moroccan",
+      "Middle Eastern",
+      "Asian Fusion",
+      "Experimental/Creative"
+    ],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["experience", "itinerary"]
+  },
+  {
+    "name": "Target Audience",
+    "field": "targetAudience",
+    "value": [
+      "Couples",
+      "Solo Diners",
+      "Families",
+      "Groups of Friends",
+      "Special Occasions",
+      "Food Enthusiasts",
+      "Trendsetters/Influencers"
+    ],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["experience", "itinerary"]
+  },
+  {
+    "name": "Special Features",
+    "field": "specialFeatures",
+    "value": [
+      "Outdoor Seating",
+      "Rooftop Dining",
+      "Scenic Views",
+      "Live Music/Entertainment",
+      "Michelin-Starred",
+      "Instagrammable",
+      "Farm-to-Table",
+      "Pet-Friendly",
+      "Chef’s Table Experiences",
+      "Hidden Gem",
+      "Open Kitchen"
+    ],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["experience", "itinerary"]
+  },
+  {
+    "name": "Unique Experiences",
+    "field": "uniqueExperiences",
+    "value": [
+      "Seasonal Menu",
+      "Tasting Menu",
+      "Wine Pairing",
+      "Cooking Classes",
+      "Local/Traditional Dishes",
+      "Historical or Cultural Significance"
+    ],
+    "weight": {
+      "stay": 1,
+      "experience": 8,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["experience", "itinerary"]
+  },
+  {
+    "name": "Dining Time",
+    "field": "dinningTime",
+    "value": [
+      "Breakfast",
+      "Brunch",
+      "Lunch",
+      "Afternoon Tea",
+      "Dinner",
+      "Late Night"
+    ],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["experience", "itinerary"]
+  },
+  {
+    "name": "Michelin-Starred",
+    "field": "michelinStarred",
+    "value": ["1-Star", "2-Star", "3-Star"],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["experience", "itinerary"]
+  },
+  {
+    "name": "Famous Restaurant Groups",
+    "field": "famousRestaurantGroups",
+    "value": [
+      "Nobu",
+      "Alain Ducasse",
+      "Jean-Georges",
+      "Momofuku",
+      "Hakkasan",
+      "Soho House Group"
+    ],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["experience", "itinerary"]
+  },
+  {
+    "name": "Hotel-Affiliated Restaurants",
+    "field": "hotelAffiliatedRestaurants",
+    "value": [
+      "Small Luxury Hotels (SLH)",
+      "Relais & Châteaux",
+      "Bulgari Hotels & Resorts",
+      "Aman",
+      "Four Seasons",
+      "Ritz-Carlton",
+      "St. Regis"
+    ],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["experience", "itinerary"]
+  },
+  {
+    "name": "Special Awards",
+    "field": "specialAwards",
+    "value": [
+      "World’s 50 Best Restaurants",
+      "Bib Gourmand",
+      "James Beard Award"
+    ],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["experience", "itinerary"]
+  },
+  {
+    "name": "Unique Cultural/Local Experiences",
+    "field": "isUniqueCulturalLocalExperiences",
+    "value": ["yes", "no"],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["stay", "itinerary", "itinerary"]
+  },
+  {
+    "name": "Kid-Friendly",
+    "field": "isChildFriendly",
+    "value": ["yes", "no"],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["stay", "experience", "itinerary"]
+  },
+  {
+    "name": "Pet-Friendly",
+    "field": "isPetFriendly",
+    "value": ["yes", "no"],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["stay", "experience", "itinerary"]
+  },
+  {
+    "name": "Wellness Focused",
+    "field": "isWellnessFocused",
+    "value": ["yes", "no"],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["stay", "itinerary"]
+  },
+  {
+    "name": "Group-Friendly",
+    "field": "isGroupFriendly",
+    "value": ["yes", "no"],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["stay", "experience", "itinerary"]
+  },
+  {
+    "name": "Accessibility",
+    "field": "isAccessibility",
+    "value": ["yes", "no"],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["stay", "experience", "itinerary"]
+  },
+  {
+    "name": "Inspired Suggested",
+    "field": "isInspireSuggested",
+    "value": ["yes", "no"],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["stay", "experience", "itinerary"]
+  },
+  {
+    "name": "Hidden Gem",
+    "field": "isHiddenGem",
+    "value": ["yes", "no"],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["stay", "experience", "itinerary"]
+  },
+  {
+    "name": "Trending",
+    "field": "isTrending",
+    "value": ["yes", "no"],
+    "weight": {
+      "stay": 1,
+      "experience": 1,
+      "itinerary": 1,
+      "common": 1
+    },
+    "applicableTo": ["stay", "experience", "itinerary"]
+  }
+]

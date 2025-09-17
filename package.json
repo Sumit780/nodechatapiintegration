@@ -1,0 +1,26 @@
+{
+  "name": "chatapi",
+  "version": "1.0.0",
+  "description": "chat api ntigration",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon --ext js,json --watch server.js --watch hotel_tags.json server.js",
+    "server": "nodemon server.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "@langchain/groq": "^0.2.3",
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "langchain": "^0.3.32",
+    "mongoose": "^8.18.0",
+    "node-fetch": "^3.3.2"
+  }
+}
