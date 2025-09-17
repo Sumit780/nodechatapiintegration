@@ -41,7 +41,7 @@ const HOTEL_NUMERIC_FIELDS = hotelTagsDef
 const prompt = ChatPromptTemplate.fromTemplate(`
 You are a travel assistant.
 
-Return ONLY a single minified JSON object with exactly these top-level keys: "hotelName", "location", "description", "hotelTags", "rooms".
+Return ONLY a single minified JSON object with exactly these top-level keys: "hotelName", "location", "description","insiderInfo", "hotelTags", "rooms".
 - No markdown, no code fences, no pre/post text.
 - No comments.
 - No trailing commas.
@@ -82,14 +82,12 @@ const outputParser = new StringOutputParser();
 const chain = prompt.pipe(model).pipe(outputParser);
 
 const descPrompt = ChatPromptTemplate.fromTemplate(`
-You are a travel assistant.
-
-Return ONLY a single plain text paragraph describing the hotel "{hotel}" in "{location}".
-- No JSON, no markdown, no headings.
-- 150-200 words.
-- Engaging and informative; mention style, vibe, amenities, location highlights, and ideal guests.
-`);
+I am creating a hotel booking website where for each hotel I want to give an editorial view to our audience. This means that the content that they would see on my platform wont be just to push them to book but to excite them to engage with the website and feel exited for their stay and experience. Keeping this as the gold standard, I want you to do a detailed description for this hotel - {hotel} in {location}. Now based on your understanding give me an exiting description for the hotel in no more than 200 words`);
 const descChain = descPrompt.pipe(model).pipe(new StringOutputParser());
+
+const insiderInfoPrompt = ChatPromptTemplate.fromTemplate(`
+  I am creating a hotel booking website where for each hotel I want to give an editorial view to our audience. This means that the content that they would see on my platform wont be just to push them to book but to excite them to engage with the website and feel exited for their stay and experience. Keeping this as the gold standard, I want you to do a detailed web description for this hotel website - {hotel} in {location}. Now based on your understanding give me 4-5 hidden facts (or something exciting that is not a general knowledge for that hotel). Keep these facts as an array of object with a heading in a title field and description in description field and description should be in 2 line.`);
+  const insiderInfoPromptChain = insiderInfoPrompt.pipe(model).pipe(new StringOutputParser());
 
 const roomsPrompt = ChatPromptTemplate.fromTemplate(`
 You are a travel assistant.
@@ -210,6 +208,7 @@ app.post("/hotel-info", async (req, res) => {
           hotelName,
           location,
           description: "",
+          insiderInfo: [],
           hotelTags: {},
           rooms: []
         };
@@ -228,6 +227,67 @@ app.post("/hotel-info", async (req, res) => {
       } catch (_) {
         // Fallback to raw model output if description generation fails
         result.description = typeof rawResponse === "string" ? rawResponse.trim() : "";
+      }
+    }
+
+    // Generate insiderInfo if it's missing or empty
+    if (!Array.isArray(result.insiderInfo) || result.insiderInfo.length === 0) {
+      try {
+        const genInsiderInfo = await insiderInfoPromptChain.invoke({
+          hotel: hotelName,
+          location
+        });
+
+        // Try to parse as JSON array first
+        const arr = parseArrayJson(genInsiderInfo);
+        if (Array.isArray(arr)) {
+          result.insiderInfo = arr
+            .filter(item => item && (typeof item === "object" || typeof item === "string"))
+            .map(item => {
+              if (typeof item === "string") {
+                const text = item.trim();
+                const firstSentence = text.split(/(?<=\.)\s+/)[0] || text;
+                return { heading: firstSentence.slice(0, 80), description: text };
+              }
+              const heading = typeof item.heading === "string" && item.heading.trim()
+                ? item.heading.trim()
+                : (typeof item.title === "string" ? item.title.trim() : "");
+              const description = typeof item.description === "string" ? item.description.trim() : "";
+              return { heading, description };
+            })
+            .filter(o => o.heading || o.description)
+            .slice(0, 5);
+          // Fallback: if array parsed but normalization produced no items, try splitting raw string
+          if (result.insiderInfo.length === 0 && typeof genInsiderInfo === "string") {
+            const text = genInsiderInfo.trim();
+            const candidates = text
+              .split(/\n+|\r+|\t+|\u2022\s*|\*\s+|\d+\.\s+|\-\s+/)
+              .map(s => s.trim())
+              .filter(s => s.length > 0);
+            const pieces = (candidates.length ? candidates : [text]).slice(0, 5);
+            result.insiderInfo = pieces.map(p => {
+              const firstSentence = p.split(/(?<=\.)\s+/)[0] || p;
+              return { heading: firstSentence.slice(0, 80), description: p };
+            });
+          }
+        } else if (typeof genInsiderInfo === "string") {
+          // Heuristic split of plain text into multiple facts
+          const text = genInsiderInfo.trim();
+          const candidates = text
+            .split(/\n+|\r+|\t+|\u2022\s*|\*\s+|\d+\.\s+|\-\s+/)
+            .map(s => s.trim())
+            .filter(s => s.length > 0);
+          const pieces = (candidates.length ? candidates : [text]).slice(0, 5);
+          result.insiderInfo = pieces.map(p => {
+            const firstSentence = p.split(/(?<=\.)\s+/)[0] || p;
+            return { heading: firstSentence.slice(0, 80), description: p };
+          });
+        } else {
+          result.insiderInfo = [];
+        }
+      } catch (_) {
+        // On any error, fall back to empty array to keep type stable
+        result.insiderInfo = [];
       }
     }
 
